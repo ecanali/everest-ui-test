@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# YARN
+.yarn/*
+
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
