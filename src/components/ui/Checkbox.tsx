@@ -16,7 +16,7 @@ export const Checkbox = ({
         id={id}
         type="checkbox"
         className="peer h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-md border-2 border-gray-600 bg-muted-foreground
-            transition-all checked:bg-accent
+            transition-shadow duration-150 checked:bg-accent
             focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 hover:border-accent"
         {...props}
       />
