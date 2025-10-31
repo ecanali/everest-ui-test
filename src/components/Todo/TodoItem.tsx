@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTodos } from "../../context/TodoContext";
 import type { TodoEntry } from "../../types";
 import { Button } from "../ui/Button";
@@ -24,31 +25,53 @@ interface TodoItemProps {
 
 export const TodoItem = ({ todo }: TodoItemProps) => {
   const { removeTodo, toggleTodo } = useTodos();
+  const [isRemoving, setIsRemoving] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  const handleAnimationEnd = () => {
+    if (!hasEntered) {
+      setHasEntered(true);
+    }
+
+    if (isRemoving) {
+      removeTodo(todo.id);
+    }
+  };
+
   const handleDelete = () => {
-    removeTodo(todo.id);
+    if (isRemoving) return;
+    setIsRemoving(true);
   };
 
   const handleToggle = () => {
+    if (isRemoving) return;
     toggleTodo(todo.id);
   };
 
   const checkboxId = `todo-${todo.id}`;
+  const entryClass = hasEntered ? "" : "animate-fade-in-up";
+  const exitClass = isRemoving
+    ? "pointer-events-none animate-slide-out"
+    : entryClass;
 
   return (
     <li
-      className="flex items-center justify-between rounded-lg bg-accent-foreground p-4 shadow-md transition-opacity"
+      className={`flex items-center justify-between rounded-lg bg-accent-foreground p-4 shadow-md transition-opacity ${exitClass}`}
       aria-label={todo.content}
+      onAnimationEnd={handleAnimationEnd}
     >
       <Checkbox
         id={checkboxId}
         label={todo.content}
         checked={todo.checked}
         onChange={handleToggle}
+        disabled={isRemoving}
       />
       <Button
         variant="icon"
         onClick={handleDelete}
         aria-label={`Delete task: ${todo.content}`}
+        disabled={isRemoving}
       >
         <TrashIcon />
       </Button>

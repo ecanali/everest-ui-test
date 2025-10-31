@@ -32,8 +32,9 @@ describe("TodoList", () => {
 
     render(<TodoList />);
 
+    expect(screen.getByText("No tasks yet")).toBeInTheDocument();
     expect(
-      screen.getByText("Your list is empty. Add a task to get started!")
+      screen.getByText("Add your first task to get started!")
     ).toBeInTheDocument();
 
     const totalLabel = screen.getByText("Total");

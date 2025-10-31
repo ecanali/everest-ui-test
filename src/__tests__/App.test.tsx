@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -133,6 +133,11 @@ describe("Todo App Integration Test (Dirty Data)", () => {
     });
 
     await user.click(deleteButton);
+
+    await waitFor(() => expect(deleteButton).toBeDisabled());
+
+    const todoItem = screen.getByRole("listitem", { name: todoContent });
+    fireEvent.animationEnd(todoItem, { animationName: "slideOut" });
 
     expect(screen.queryByText(todoContent)).not.toBeInTheDocument();
 
