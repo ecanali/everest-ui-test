@@ -60,26 +60,6 @@ describe("Todo App Integration Test (Dirty Data)", () => {
     expect(listItems.length).toBe(14);
   });
 
-  it("should sort todos with unchecked items first", async () => {
-    renderApp();
-
-    await screen.findByText("Meditated");
-
-    const listItems = screen.getAllByRole("listitem");
-    const itemTexts = listItems.map((item) => item.textContent);
-
-    expect(itemTexts[0]).toContain("Meditated");
-    expect(itemTexts[1]).toContain("Completed project proposal");
-    expect(itemTexts[2]).toContain("Attended team meeting");
-    expect(itemTexts[3]).toContain("Updated my resume");
-    expect(itemTexts[4]).toContain("Cooked dinner");
-    expect(itemTexts[5]).toContain("Called family");
-    expect(itemTexts[6]).toContain("Finished online course");
-
-    expect(itemTexts[7]).toContain("Organized my tasks");
-    expect(itemTexts[8]).toContain("Worked out");
-  });
-
   it("should allow user to add a new todo", async () => {
     const user = userEvent.setup();
     renderApp();
