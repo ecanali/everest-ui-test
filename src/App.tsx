@@ -54,7 +54,7 @@ function App() {
   return (
     <main className="animate-fade-in mx-auto w-full max-w-xl p-4 sm:p-6">
       <header className="text-center mb-12">
-        <div className="flex items-center justify-center mb-4">
+        <div className="pt-6 flex items-center justify-center mb-4">
           <img
             className="everest-app__logo"
             src={everestLogo}
