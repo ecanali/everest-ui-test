@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTodos } from "../../context/TodoContext";
+import { useTodos } from "../../context/useTodos";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 
@@ -48,7 +48,6 @@ export const TodoForm = () => {
         }`}
         error={error}
         aria-invalid={!!error}
-        aria-describedby={error ? "todo-error" : undefined}
       />
       <Button
         type="submit"
@@ -57,11 +56,6 @@ export const TodoForm = () => {
       >
         Add Task
       </Button>
-      {error && (
-        <span id="todo-error" className="sr-only">
-          {error}
-        </span>
-      )}
     </form>
   );
 };

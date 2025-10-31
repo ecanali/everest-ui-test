@@ -6,7 +6,8 @@ import { act, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { useEffect } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { TodoProvider, useTodos } from "../TodoContext";
+import { TodoProvider } from "../TodoContext";
+import { useTodos } from "../useTodos";
 import { fetchTodos } from "../../services/todoService";
 
 type TodoContextValue = ReturnType<typeof useTodos>;

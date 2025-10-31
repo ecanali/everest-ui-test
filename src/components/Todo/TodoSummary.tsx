@@ -1,4 +1,3 @@
-import React from "react";
 import type { FC, PropsWithChildren } from "react";
 
 type TodoSummaryProps = PropsWithChildren<{
@@ -49,7 +48,4 @@ export const TodoSummary: FC<TodoSummaryProps> = ({
     </div>
   );
 };
-
-const MemoizedTodoSummary = React.memo(TodoSummary);
-MemoizedTodoSummary.displayName = "MemoizedTodoSummary";
-export default MemoizedTodoSummary;
+export default TodoSummary;

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useTodos } from "./context/TodoContext";
+import { useTodos } from "./context/useTodos";
 import { TodoForm } from "./components/Todo/TodoForm";
 import { TodoList } from "./components/Todo/TodoList";
 import { Spinner } from "./components/ui/Spinner";

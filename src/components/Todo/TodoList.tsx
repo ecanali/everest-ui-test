@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTodos } from "../../context/TodoContext";
+import { useTodos } from "../../context/useTodos";
 import { TodoItem } from "./TodoItem";
 import TodoSummary from "./TodoSummary";
 import type { TodoEntry } from "../../types";

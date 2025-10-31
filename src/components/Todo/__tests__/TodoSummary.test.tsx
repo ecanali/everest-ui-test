@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { describe, expect, it } from "vitest";
-import MemoizedTodoSummary, { TodoSummary } from "../TodoSummary";
+import TodoSummaryComponent, { TodoSummary } from "../TodoSummary";
 
 describe("TodoSummary", () => {
   it("displays the provided totals", () => {
@@ -19,7 +19,7 @@ describe("TodoSummary", () => {
 
   it("applies additional class names on the wrapper", () => {
     render(
-      <MemoizedTodoSummary
+      <TodoSummaryComponent
         total={1}
         active={1}
         completed={0}

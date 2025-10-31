@@ -1,14 +1,12 @@
+import { createContext, ReactNode, useReducer, useCallback } from "react";
 import {
-  createContext,
-  useReducer,
-  useContext,
-  useCallback,
-  ReactNode,
-} from "react";
-import { todoReducer, initialState, TodoState } from "../reducers/todoReducer";
+  todoReducer,
+  initialState,
+  type TodoState,
+} from "../reducers/todoReducer";
 import { fetchTodos } from "../services/todoService";
 
-interface TodoContextType {
+export interface TodoContextValue {
   state: TodoState;
   loadTodos: () => Promise<void>;
   addTodo: (content: string) => void;
@@ -16,7 +14,9 @@ interface TodoContextType {
   toggleTodo: (id: number) => void;
 }
 
-const TodoContext = createContext<TodoContextType | undefined>(undefined);
+export const TodoContext = createContext<TodoContextValue | undefined>(
+  undefined
+);
 
 interface TodoProviderProps {
   children: ReactNode;
@@ -35,19 +35,19 @@ export const TodoProvider = ({ children }: TodoProviderProps) => {
     }
   }, []);
 
-  const addTodo = useCallback((content: string) => {
+  const addTodo = (content: string) => {
     dispatch({ type: "ADD_TODO", payload: content });
-  }, []);
+  };
 
-  const removeTodo = useCallback((id: number) => {
+  const removeTodo = (id: number) => {
     dispatch({ type: "REMOVE_TODO", payload: id });
-  }, []);
+  };
 
-  const toggleTodo = useCallback((id: number) => {
+  const toggleTodo = (id: number) => {
     dispatch({ type: "TOGGLE_TODO", payload: id });
-  }, []);
+  };
 
-  const value = {
+  const value: TodoContextValue = {
     state,
     loadTodos,
     addTodo,
@@ -56,12 +56,4 @@ export const TodoProvider = ({ children }: TodoProviderProps) => {
   };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
-};
-
-export const useTodos = () => {
-  const context = useContext(TodoContext);
-  if (context === undefined) {
-    throw new Error("useTodos must be used within a TodoProvider");
-  }
-  return context;
 };

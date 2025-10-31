@@ -1,4 +1,4 @@
-vi.mock("../../../context/TodoContext", () => ({
+vi.mock("../../../context/useTodos", () => ({
   useTodos: vi.fn(),
 }));
 
@@ -6,7 +6,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { useTodos } from "../../../context/TodoContext";
+import { useTodos } from "../../../context/useTodos";
 import { TodoItem } from "../TodoItem";
 
 const mockedUseTodos = vi.mocked(useTodos);
