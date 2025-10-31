@@ -16,6 +16,7 @@ Instructions for the implementation can be found in the [INSTRUCTIONS](./INSTRUC
 * **Language:** TypeScript
 * **Styling:** Tailwind CSS (with a Mobile-First approach)
 * **Data Validation:** Zod
+* **Testing:** Vitest + React Testing Library
 
 ## Running Locally
 
@@ -35,9 +36,10 @@ Instructions for the implementation can be found in the [INSTRUCTIONS](./INSTRUC
     yarn start
     ```
 
-4.  To run the tests:
+4.  To run the tests and code coverage report:
     ```bash
     yarn test
+    yarn coverage
     ```
 
 ## Technical Decisions & Rationale
